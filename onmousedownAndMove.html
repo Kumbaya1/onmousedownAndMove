@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width:200px;
+            height:200px;
+            background: #ff0000;
+            position:absolute;
+            text-align:center;
+            line-height:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div">请点击我 按住拖动</div>
+<script>
+    var oDiv = document.getElementById("div");
+    oDiv.onmousedown = function(e){
+        var disX = e.clientX;
+        var disY = e.clientY;
+        var divX = oDiv.offsetLeft;
+        var divT = oDiv.offsetTop;
+//            console.log(disY);
+//              console.log(divX);
+        //   console.log(divT);
+        // console.log(disX);
+        document.onmousemove = function(e){
+            //console.log("a");
+//                console.log(oDiv.offsetLeft);
+            oDiv.style.left = divX + (e.clientX - disX) + "px";   //divX == 常量 ;
+            oDiv.style.top = divT + (e.clientY - disY) + "px";
+        };
+        oDiv.onmouseup = function(){
+            document.onmousemove = null;
+        };
+    };
+//    oDiv.onmouseup = function(){
+//        play = null;
+//    };
+</script>
+
+</body>
+</html>
